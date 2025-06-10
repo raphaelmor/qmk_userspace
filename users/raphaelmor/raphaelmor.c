@@ -5,13 +5,11 @@
 void ramo_TD_make_colemak_default(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         set_single_default_layer(L_COLEMAK);
-        print("RAMO: switched to Colemak");
     }
 };
 void ramo_TD_make_hd_gold_default(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         set_single_default_layer(L_HANDSDOWN);
-        print("RAMO: switched to Handsdown Gold");
     }
 };
 
@@ -24,7 +22,24 @@ tap_dance_action_t tap_dance_actions[] = {
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   debug_enable=true;
-  debug_matrix=true;
   debug_keyboard=true;
   debug_mouse=true;
 };
+
+
+// process
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    bool return_state = true;
+    uint8_t  saved_mods;
+
+    saved_mods = get_mods();
+
+    if (record->event.pressed == true) {
+        println("ramo: key pressed");
+    } else {
+        println("ramo: key released");
+    }
+
+    return true;
+}

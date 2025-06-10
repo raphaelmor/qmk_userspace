@@ -43,12 +43,12 @@
 #define NUM_RM4 KC_RCTL
 #define NUM_RM5 NUM_NO
 
-#define NUM_LB5 KC_GRV
-#define NUM_LB4 KC_1
-#define NUM_LB3 KC_2
-#define NUM_LB2 KC_3
-#define NUM_LB1 KC_BSLS
-#define NUM_LB0 NUM_NO
+#define NUM_LB5 NUM_NO
+#define NUM_LB4 KC_GRV
+#define NUM_LB3 KC_1
+#define NUM_LB2 KC_2
+#define NUM_LB1 KC_3
+#define NUM_LB0 KC_BSLS
 #define NUM_RB0 NUM_NO
 #define NUM_RB1 NUM_NO
 #define NUM_RB2 NUM_NO
