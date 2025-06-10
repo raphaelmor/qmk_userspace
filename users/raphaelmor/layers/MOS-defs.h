@@ -22,7 +22,9 @@
 #define MOS_LT2 NAV_NO
 #define MOS_LT1 NAV_NO
 #define MOS_LT0 NAV_NO
+#define MOS_LTA KC_NO // TODO: should be a real key once a use is found
 
+#define MOS_RTA KC_NO // TODO: should be a real key once a use is found
 #define MOS_RT0 SCMD(KC_Z)
 #define MOS_RT1 LCMD(KC_V)
 #define MOS_RT2 LCMD(KC_C)
@@ -36,7 +38,9 @@
 #define MOS_LM2 KC_LGUI
 #define MOS_LM1 KC_LSFT
 #define MOS_LM0 NAV_NO
+#define MOS_LMA KC_NO // TODO: should be a real key once a use is found
 
+#define MOS_RMA KC_NO // TODO: should be a real key once a use is found
 #define MOS_RM0 MOS_NO
 #define MOS_RM1 KC_MS_L
 #define MOS_RM2 KC_MS_D

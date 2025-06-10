@@ -23,7 +23,9 @@
 #define SYM_LT2 KC_ASTR
 #define SYM_LT1 KC_LPRN
 #define SYM_LT0 KC_RCBR
+#define SYM_LTA KC_NO // TODO: should be a real key once a use is found
 
+#define SYM_RTA KC_NO // TODO: should be a real key once a use is found
 #define SYM_RT0 SYM_NO
 #define SYM_RT1 SYM_NO
 #define SYM_RT2 SYM_NO
@@ -37,7 +39,9 @@
 #define SYM_LM2 KC_PERC
 #define SYM_LM1 KC_CIRC
 #define SYM_LM0 KC_PLUS
+#define SYM_LMA KC_NO // TODO: should be a real key once a use is found
 
+#define SYM_RMA KC_NO // TODO: should be a real key once a use is found
 #define SYM_RM0 SYM_NO
 #define SYM_RM1 KC_RSFT
 #define SYM_RM2 KC_RGUI

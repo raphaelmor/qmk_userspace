@@ -23,7 +23,9 @@
 #define NAV_LT2 TD(RAMO_TD_CMK)
 #define NAV_LT1 TD(RAMO_TD_HDG)
 #define NAV_LT0 NAV_NO
+#define NAV_LTA KC_NO // TODO: should be a real key once a use is found
 
+#define NAV_RTA KC_NO // TODO: should be a real key once a use is found
 #define NAV_RT0 SCMD(KC_Z)
 #define NAV_RT1 LCMD(KC_V)
 #define NAV_RT2 LCMD(KC_C)
@@ -37,7 +39,9 @@
 #define NAV_LM2 KC_LGUI
 #define NAV_LM1 KC_LSFT
 #define NAV_LM0 NAV_NO
+#define NAV_LMA KC_NO // TODO: should be a real key once a use is found
 
+#define NAV_RMA KC_NO // TODO: should be a real key once a use is found
 #define NAV_RM0 CW_TOGG
 #define NAV_RM1 KC_LEFT
 #define NAV_RM2 KC_DOWN

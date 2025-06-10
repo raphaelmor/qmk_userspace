@@ -23,6 +23,9 @@
 #define NUM_LT2 KC_8
 #define NUM_LT1 KC_9
 #define NUM_LT0 KC_RBRC
+#define NUM_LTA KC_NO // TODO: should be a real key once a use is found
+
+#define NUM_RTA KC_NO // TODO: should be a real key once a use is found
 #define NUM_RT0 NUM_NO
 #define NUM_RT1 NUM_NO
 #define NUM_RT2 NUM_NO
@@ -36,6 +39,9 @@
 #define NUM_LM2 KC_5
 #define NUM_LM1 KC_6
 #define NUM_LM0 KC_EQL
+#define NUM_LMA KC_NO // TODO: should be a real key once a use is found
+
+#define NUM_RMA KC_NO // TODO: should be a real key once a use is found
 #define NUM_RM0 NUM_NO
 #define NUM_RM1 KC_RSFT
 #define NUM_RM2 KC_RGUI

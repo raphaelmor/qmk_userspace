@@ -39,12 +39,12 @@
 #define HDG_MINS KC_MINS
 #define HDG_MEH  KC_MEH
 
-#define HDG_TAB  KC_TAB
+#define HDG_TAB  LT(L_NAV,KC_TAB)
 #define HDG_ESC  LT(L_MEDIA, KC_ESC)
-#define HDG_SPC  LT(L_NAV,KC_SPC)
-#define HDG_ENT  LT(L_SYM,KC_ENT)
-#define HDG_BSPC LT(L_NUM,KC_BSPC)
-#define HDG_DEL  LT(L_FUN,KC_DEL)
+#define HDG_SPC  LT(L_SYM,KC_SPC)
+#define HDG_ENT  LT(L_NUM,KC_ENT)
+#define HDG_BSPC LT(L_FUN,KC_BSPC)
+#define HDG_DEL  KC_DEL
 
 // Now let's place these HD keycodes on the keymap
 // for variation independent spatial referencing by key position
@@ -74,6 +74,9 @@
 #define HDG_LT2 HDG_M
 #define HDG_LT1 HDG_P
 #define HDG_LT0 HDG_V
+#define HDG_LTA KC_NO // TODO: should be a real key once a use is found
+
+#define HDG_RTA KC_NO // TODO: should be a real key once a use is found
 #define HDG_RT0 HDG_SCLN
 #define HDG_RT1 HDG_DOT
 #define HDG_RT2 HDG_SLSH
@@ -88,6 +91,9 @@
 #define HDG_LM2 HDG_N
 #define HDG_LM1 HDG_D
 #define HDG_LM0 HDG_B
+#define HDG_LMA KC_NO // TODO: should be a real key once a use is found
+
+#define HDG_RMA KC_NO // TODO: should be a real key once a use is found
 #define HDG_RM0 HDG_COMM
 #define HDG_RM1 HDG_A
 #define HDG_RM2 HDG_E
@@ -110,8 +116,8 @@
 
 //Primary Thumbs 1-3 (others are unique to the board)
 #define HDG_LH2 HDG_ESC
-#define HDG_LH1 HDG_SPC
+#define HDG_LH1 HDG_TAB
 #define HDG_LH0 HDG_T
-#define HDG_RH0 HDG_ENT
-#define HDG_RH1 HDG_BSPC
-#define HDG_RH2 HDG_DEL
+#define HDG_RH0 HDG_SPC
+#define HDG_RH1 HDG_ENT
+#define HDG_RH2 HDG_BSPC

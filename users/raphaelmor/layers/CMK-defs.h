@@ -77,7 +77,9 @@
 #define CMK_LT2 CMK_F
 #define CMK_LT1 CMK_P
 #define CMK_LT0 CMK_G
+#define CMK_LTA CMK_A // TODO: should be a real key once a use is found
 
+#define CMK_RTA CMK_A // TODO: should be a real key once a use is found
 #define CMK_RT0 CMK_J
 #define CMK_RT1 CMK_L
 #define CMK_RT2 CMK_U
@@ -91,7 +93,9 @@
 #define CMK_LM2 CMK_S
 #define CMK_LM1 CMK_T
 #define CMK_LM0 CMK_D
+#define CMK_LMA CMK_A // TODO: should be a real key once a use is found
 
+#define CMK_RMA CMK_A // TODO: should be a real key once a use is found
 #define CMK_RM0 CMK_H
 #define CMK_RM1 CMK_N
 #define CMK_RM2 CMK_E

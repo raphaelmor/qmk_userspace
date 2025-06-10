@@ -47,11 +47,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // }
 //
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-#define RAMO_DO(LAYER, STR) [L_##LAYER] = LAYOUT_split_3x6_3( \
-      STR##_LT5 , STR##_LT4 , STR##_LT3 , STR##_LT2 , STR##_LT1 , STR##_LT0 ,      STR##_RT0 , STR##_RT1 , STR##_RT2 , STR##_RT3 , STR##_RT4 , STR##_RT5 , \
-      STR##_LM5 , STR##_LM4 , STR##_LM3 , STR##_LM2 , STR##_LM1 , STR##_LM0 ,      STR##_RM0 , STR##_RM1 , STR##_RM2 , STR##_RM3 , STR##_RM4 , STR##_RM5 , \
-      STR##_LB5 , STR##_LB4 , STR##_LB3 , STR##_LB2 , STR##_LB1 , STR##_LB0 ,      STR##_RB0 , STR##_RB1 , STR##_RB2 , STR##_RB3 , STR##_RB4 , STR##_RB5 , \
-                                          STR##_LH2 , STR##_LH1 , STR##_LH0 ,      STR##_RH0 , STR##_RH1 , STR##_RH2 \
+#define RAMO_DO(LAYER, STR) [L_##LAYER] = LAYOUT_split_3x6_3_ex2( \
+      STR##_LT5 , STR##_LT4 , STR##_LT3 , STR##_LT2 , STR##_LT1 , STR##_LT0 , STR##_LTA ,      STR##_RTA , STR##_RT0 , STR##_RT1 , STR##_RT2 , STR##_RT3 , STR##_RT4 , STR##_RT5 , \
+      STR##_LM5 , STR##_LM4 , STR##_LM3 , STR##_LM2 , STR##_LM1 , STR##_LM0 , STR##_LMA ,      STR##_RMA , STR##_RM0 , STR##_RM1 , STR##_RM2 , STR##_RM3 , STR##_RM4 , STR##_RM5 , \
+      STR##_LB5 , STR##_LB4 , STR##_LB3 , STR##_LB2 , STR##_LB1 , STR##_LB0 ,                              STR##_RB0 , STR##_RB1 , STR##_RB2 , STR##_RB3 , STR##_RB4 , STR##_RB5 , \
+                                          STR##_LH2 , STR##_LH1 , STR##_LH0 ,                              STR##_RH0 , STR##_RH1 , STR##_RH2 \
   ),
 RAMO_FOR_EACH_LAYER
 #undef RAMO_DO

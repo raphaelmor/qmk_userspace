@@ -31,15 +31,13 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool return_state = true;
-    uint8_t  saved_mods;
-
-    saved_mods = get_mods();
+    // uint8_t  saved_mods;
+    // saved_mods = get_mods();
 
     if (record->event.pressed == true) {
         println("ramo: key pressed");
     } else {
         println("ramo: key released");
     }
-
-    return true;
+    return return_state;
 }

@@ -23,7 +23,9 @@
 #define FUN_LT2 KC_F8
 #define FUN_LT1 KC_F9
 #define FUN_LT0 KC_PSCR
+#define FUN_LTA KC_NO // TODO: should be a real key once a use is found
 
+#define FUN_RTA KC_NO // TODO: should be a real key once a use is found
 #define FUN_RT0 FUN_NO
 #define FUN_RT1 FUN_NO
 #define FUN_RT2 FUN_NO
@@ -37,6 +39,9 @@
 #define FUN_LM2 KC_F5
 #define FUN_LM1 KC_F6
 #define FUN_LM0 KC_SCRL
+#define FUN_LMA KC_NO // TODO: should be a real key once a use is found
+
+#define FUN_RMA KC_NO // TODO: should be a real key once a use is found
 #define FUN_RM0 FUN_NO
 #define FUN_RM1 KC_RSFT
 #define FUN_RM2 KC_RGUI

@@ -23,7 +23,9 @@
 #define MED_LT2 MED_NO
 #define MED_LT1 MED_NO
 #define MED_LT0 MED_NO
+#define MED_LTA KC_NO // TODO: should be a real key once a use is found
 
+#define MED_RTA KC_NO // TODO: should be a real key once a use is found
 #define MED_RT0 RGB_TOG
 #define MED_RT1 RGB_MOD
 #define MED_RT2 RGB_HUI
@@ -37,7 +39,9 @@
 #define MED_LM2 KC_LGUI
 #define MED_LM1 KC_LSFT
 #define MED_LM0 NAV_NO
+#define MED_LMA KC_NO // TODO: should be a real key once a use is found
 
+#define MED_RMA KC_NO // TODO: should be a real key once a use is found
 #define MED_RM0 MED_NO
 #define MED_RM1 MED_NO
 #define MED_RM2 KC_MPRV
