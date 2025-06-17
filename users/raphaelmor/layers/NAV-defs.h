@@ -21,7 +21,7 @@
 #define NAV_LT4 NAV_NO
 #define NAV_LT3 NAV_NO
 #define NAV_LT2 TD(RAMO_TD_CMK)
-#define NAV_LT1 TD(RAMO_TD_HDG)
+#define NAV_LT1 TD(RAMO_TD_HD)
 #define NAV_LT0 NAV_NO
 #define NAV_LTA KC_NO // TODO: should be a real key once a use is found
 

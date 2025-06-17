@@ -64,7 +64,7 @@
 //     │ ESC  J   G   M   P   V  │  │  ;   .   /   "   '  HYP │
 //     │ TAB  R   S   N   D   B  │  │  ,   A   E   I   H  MEH │
 //     │  Z   X   F   L   C   W  │  │  -   U   O   Y   K   Q  │
-//     ╰───────────╮ ESC SPC  T  │  │ ENT BSP DEL ╭───────────╯
+//     ╰───────────╮ ESC TAB  T  │  │ SPC ENT BSP ╭───────────╯
 //                 ╰─────────────╯  ╰─────────────╯
 //
 
@@ -121,3 +121,15 @@
 #define HDG_RH0 HDG_SPC
 #define HDG_RH1 HDG_ENT
 #define HDG_RH2 HDG_BSPC
+
+
+// H digraph combos
+// try to make these use the lead letter and a neighbor.
+#define USE_HD_H_DIGRAPH_COMBO
+#define HD_Th_keys HDG_LM2, HDG_LM1 // TYPE "nd" to write "th"
+
+// type g + p to type q
+#define HD_Q_keys HDP_LT3, HDP_LT1
+
+// type s + d  to type z
+#define HD_Z_keys HDP_LM3, HDP_LM1

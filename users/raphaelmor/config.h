@@ -23,3 +23,7 @@
 #define MOUSEKEY_MAX_SPEED      6
 #undef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX    64
+
+
+// CUSTOM CONFIG
+#define RAMO_COMBO_HOLD (TAPPING_TERM) // time to hold to trigger delayed combo

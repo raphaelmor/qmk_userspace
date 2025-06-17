@@ -7,22 +7,22 @@
 #define CMK_C KC_C
 #define CMK_D KC_D
 #define CMK_E RGUI_T(KC_E)
-#define CMK_F KC_F
+#define CMK_F HYPR_T(KC_F)
 #define CMK_G KC_G
 #define CMK_H KC_H
 #define CMK_I RALT_T(KC_I)
 #define CMK_J KC_J
 #define CMK_K KC_K
-#define CMK_L KC_L
+#define CMK_L MEH_T(KC_L)
 #define CMK_M KC_M
 #define CMK_N RSFT_T(KC_N)
 #define CMK_O RCTL_T(KC_O)
-#define CMK_P KC_P
+#define CMK_P MEH_T(KC_P)
 #define CMK_Q KC_Q
 #define CMK_R LALT_T(KC_R)
 #define CMK_S LGUI_T(KC_S)
 #define CMK_T LSFT_T(KC_T)
-#define CMK_U KC_U
+#define CMK_U HYPR_T(KC_U)
 #define CMK_V KC_V
 #define CMK_W KC_W
 #define CMK_X KC_X
@@ -126,3 +126,9 @@
 #define CMK_RH0 CMK_ENT
 #define CMK_RH1 CMK_BSPC
 #define CMK_RH2 CMK_DEL
+
+
+// H digraph combos
+// try to make these use the lead letter and a neighbor.
+//
+#define CMK_Th_keys CMK_LM2, CMK_LM1 // TYPE "st" to write "th"

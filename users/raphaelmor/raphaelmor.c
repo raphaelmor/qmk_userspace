@@ -1,43 +1,25 @@
 #include QMK_KEYBOARD_H
 #include "raphaelmor.h"
 
-
-void ramo_TD_make_colemak_default(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        set_single_default_layer(L_COLEMAK);
-    }
-};
-void ramo_TD_make_hd_gold_default(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        set_single_default_layer(L_HANDSDOWN);
-    }
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [RAMO_TD_CMK] = ACTION_TAP_DANCE_FN(ramo_TD_make_colemak_default),
-    [RAMO_TD_HDG] = ACTION_TAP_DANCE_FN(ramo_TD_make_hd_gold_default),
-};
-
-
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   debug_enable=true;
-  debug_keyboard=true;
-  debug_mouse=true;
+  // debug_keyboard=true;
+  // debug_mouse=true;
 };
 
+// Info shared by subroutines (tap_dance, combos, etc..)
+uint8_t  saved_modifiers;
+uint32_t linger_timer = 0; // time elapsed since combo was pressed
 
 // process
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    bool return_state = true;
-    // uint8_t  saved_mods;
-    // saved_mods = get_mods();
-
-    if (record->event.pressed == true) {
-        println("ramo: key pressed");
-    } else {
-        println("ramo: key released");
-    }
-    return return_state;
+    saved_modifiers = get_mods(); // share modifiers
+    return true;
 }
+
+// Include tap_dance processing code
+#include "tap_dance.c"
+
+// Include combo processing code
+#include "combos.c"
