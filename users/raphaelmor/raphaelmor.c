@@ -2,10 +2,10 @@
 #include "raphaelmor.h"
 
 void keyboard_post_init_user(void) {
-  // Customise these values to desired behaviour
-  debug_enable=true;
-  // debug_keyboard=true;
-  // debug_mouse=true;
+    // Customise these values to desired behaviour
+    debug_enable=true;
+    // rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    // rgb_matrix_sethsv_noeeprom(HSV_OFF);
 };
 
 // Info shared by subroutines (tap_dance, combos, etc..)
@@ -23,3 +23,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Include combo processing code
 #include "combos.c"
+
+
