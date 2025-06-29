@@ -13,5 +13,17 @@
 - Combos
   - ~z Combo~
   - ~Qu combo + linger~
+  - Explore the other combos
 - RGB Matrix
+  - ~Basic Alpha Layout coloring~
+  - Finish all the other layouts (Mouse and FUN)
+- Explore Case Mods
+  - Like capsword, but for camelCase, kebab-case, snake_case, etc...
 - Adaptive keys
+
+LED color map
+BLACK : Inactive
+SPRING : Colemak
+ORANGE : HD-p or g
+CHARTREUSE : Core Keys of the layer (arrows on NAV, numbers on NUM etc...)
+WHITE : Other Keys for the layer (home,end, copy cut on NAV, etc..)

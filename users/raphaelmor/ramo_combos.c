@@ -2,16 +2,26 @@
 #ifdef USE_HD_H_DIGRAPH_COMBO
 const uint16_t PROGMEM HD_Th_combo[] = {HD_Th_keys, COMBO_END}; // TYPE "th" in hands down
 #endif
-const uint16_t PROGMEM HD_Q_combo[] = {HD_Q_keys, COMBO_END}; // TYPE "q" (Qu & Linger deletes u)
+const uint16_t PROGMEM HD_Qu_combo[] = {HD_Q_keys, COMBO_END}; // TYPE "qu" (Linger deletes u)
 const uint16_t PROGMEM HD_Z_combo[] = {HD_Z_keys, COMBO_END}; // TYPE "z"
 const uint16_t PROGMEM CMK_Th_combo[] = {CMK_Th_keys, COMBO_END}; // TYPE "th" in colemak
+
+enum ramo_combos {
+    NO_COMBO = 0, // Sentinel value (0) to signify no combo is currently pressed
+#ifdef USE_HD_H_DIGRAPH_COMBO
+    HD_COMBO_Th,
+#endif
+    HD_COMBO_QU,
+    HD_COMBO_Z,
+    CMK_COMBO_Th,
+};
 
 combo_t key_combos[] = {
     // Hands Down (Gold and Promethium) combos
 #ifdef USE_HD_H_DIGRAPH_COMBO
     [HD_COMBO_Th] = COMBO_ACTION(HD_Th_combo),
     #endif
-    [HD_COMBO_Q] = COMBO_ACTION(HD_Q_combo),
+    [HD_COMBO_QU] = COMBO_ACTION(HD_Qu_combo),
     [HD_COMBO_Z] = COMBO(HD_Z_combo, KC_Z),
     // Colemak combos
     [CMK_COMBO_Th] = COMBO_ACTION(CMK_Th_combo),
@@ -55,7 +65,7 @@ uint8_t ramo_process_combo_pressed(uint16_t combo_index) {
                 tap_code(KC_H); // send "h" honoring CAPSLK state
             }
             break;
-        case HD_COMBO_Q:
+        case HD_COMBO_QU:
             println("RAMO: Pressed N + H to type qu");
             if (is_caps_word_on()) {
                 tap_code16(S(KC_Q));
@@ -77,18 +87,18 @@ void ramo_process_combo_released(uint16_t combo_index) {
 #endif
         case CMK_COMBO_Th:
             break;
-        case HD_COMBO_Q:
-            println("RAMO: Released N + H to type qu");
+        case HD_COMBO_QU:
+            println("RAMO: Released P + L to type qu");
     }
 }
 
-void matrix_scan_user(void) {
+void combo_check_for_linger(void) {
     if ((timer_elapsed(linger_timer) > RAMO_COMBO_HOLD) && current_combo) {
         println("RAMO: TRIGGERING COMBO_HOLD");
         uint16_t saved_mods = get_mods();
         clear_mods();
         switch (current_combo) {
-        case HD_COMBO_Q:
+        case HD_COMBO_QU:
             tap_code16(KC_BSPC); // held, so delete u
             break;
         }

@@ -26,11 +26,11 @@
 #define NAV_LTA KC_NO // TODO: should be a real key once a use is found
 
 #define NAV_RTA KC_NO // TODO: should be a real key once a use is found
-#define NAV_RT0 SCMD(KC_Z)
+#define NAV_RT0 LCMD(KC_Z)
 #define NAV_RT1 LCMD(KC_V)
 #define NAV_RT2 LCMD(KC_C)
 #define NAV_RT3 LCMD(KC_X)
-#define NAV_RT4 LCMD(KC_Z)
+#define NAV_RT4 SCMD(KC_Z)
 #define NAV_RT5 NAV_NO
 
 #define NAV_LM5 NAV_NO
@@ -71,3 +71,59 @@
 #define NAV_RH0 KC_ENT
 #define NAV_RH1 KC_BSPC
 #define NAV_RH2 KC_DEL
+
+
+
+#define NAV_RGB_LT5 BLACK
+#define NAV_RGB_LT4 BLACK
+#define NAV_RGB_LT3 BLACK
+#define NAV_RGB_LT2 SPRING
+#define NAV_RGB_LT1 ORANGE
+#define NAV_RGB_LT0 BLACK
+#define NAV_RGB_LTA BLACK
+
+#define NAV_RGB_RTA BLACK
+#define NAV_RGB_RT0 CHARTREUSE
+#define NAV_RGB_RT1 CHARTREUSE
+#define NAV_RGB_RT2 CHARTREUSE
+#define NAV_RGB_RT3 CHARTREUSE
+#define NAV_RGB_RT4 CHARTREUSE
+#define NAV_RGB_RT5 BLACK
+
+#define NAV_RGB_LM5 BLACK
+#define NAV_RGB_LM4 WHITE
+#define NAV_RGB_LM3 WHITE
+#define NAV_RGB_LM2 WHITE
+#define NAV_RGB_LM1 WHITE
+#define NAV_RGB_LM0 BLACK
+#define NAV_RGB_LMA BLACK
+
+#define NAV_RGB_RMA BLACK
+#define NAV_RGB_RM0 WHITE
+#define NAV_RGB_RM1 CHARTREUSE
+#define NAV_RGB_RM2 CHARTREUSE
+#define NAV_RGB_RM3 CHARTREUSE
+#define NAV_RGB_RM4 CHARTREUSE
+#define NAV_RGB_RM5 BLACK
+
+#define NAV_RGB_LB5 BLACK
+#define NAV_RGB_LB4 BLACK
+#define NAV_RGB_LB3 BLACK
+#define NAV_RGB_LB2 WHITE
+#define NAV_RGB_LB1 BLACK
+#define NAV_RGB_LB0 BLACK
+
+#define NAV_RGB_RB0 CHARTREUSE
+#define NAV_RGB_RB1 CHARTREUSE
+#define NAV_RGB_RB2 CHARTREUSE
+#define NAV_RGB_RB3 CHARTREUSE
+#define NAV_RGB_RB4 CHARTREUSE
+#define NAV_RGB_RB5 BLACK
+
+#define NAV_RGB_LH2 BLACK
+#define NAV_RGB_LH1 BLACK
+#define NAV_RGB_LH0 BLACK
+
+#define NAV_RGB_RH0 WHITE
+#define NAV_RGB_RH1 WHITE
+#define NAV_RGB_RH2 WHITE

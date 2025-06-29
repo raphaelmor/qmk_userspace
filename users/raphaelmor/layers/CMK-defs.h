@@ -67,11 +67,8 @@
 //     ╰───────────╮ ESC SPC TAB │  │ ENT BSP DEL ╭───────────╯
 //                 ╰─────────────╯  ╰─────────────╯
 //
-//qwfpg jluy;
-//arstd hneio
-//zxcvb km,./
 
-#define CMK_LT5 CMK_ESC
+#define CMK_LT5 KC_NO
 #define CMK_LT4 CMK_Q
 #define CMK_LT3 CMK_W
 #define CMK_LT2 CMK_F
@@ -85,9 +82,9 @@
 #define CMK_RT2 CMK_U
 #define CMK_RT3 CMK_Y
 #define CMK_RT4 CMK_QUOT
-#define CMK_RT5 CMK_HYPR
+#define CMK_RT5 KC_NO
 
-#define CMK_LM5 CMK_TAB
+#define CMK_LM5 KC_NO
 #define CMK_LM4 CMK_A
 #define CMK_LM3 CMK_R
 #define CMK_LM2 CMK_S
@@ -101,7 +98,7 @@
 #define CMK_RM2 CMK_E
 #define CMK_RM3 CMK_I
 #define CMK_RM4 CMK_O
-#define CMK_RM5 CMK_MEH
+#define CMK_RM5 KC_NO
 
 #define CMK_LB5 KC_NO
 #define CMK_LB4 CMK_Z
@@ -115,8 +112,7 @@
 #define CMK_RB2 CMK_COMM
 #define CMK_RB3 CMK_DOT
 #define CMK_RB4 CMK_SLSH
-// TEMPORARY
-#define CMK_RB5 DF(L_HANDSDOWN)
+#define CMK_RB5 KC_NO
 
 //Primary Thumbs 1-3 (others are unique to the board)
 #define CMK_LH2 CMK_ESC
@@ -126,6 +122,63 @@
 #define CMK_RH0 CMK_ENT
 #define CMK_RH1 CMK_BSPC
 #define CMK_RH2 CMK_DEL
+
+
+// Define layer colors
+
+#define CMK_RGB_LT5 BLACK
+#define CMK_RGB_LT4 SPRING
+#define CMK_RGB_LT3 SPRING
+#define CMK_RGB_LT2 SPRING
+#define CMK_RGB_LT1 SPRING
+#define CMK_RGB_LT0 SPRING
+#define CMK_RGB_LTA BLACK
+
+#define CMK_RGB_RTA BLACK
+#define CMK_RGB_RT0 SPRING
+#define CMK_RGB_RT1 SPRING
+#define CMK_RGB_RT2 SPRING
+#define CMK_RGB_RT3 SPRING
+#define CMK_RGB_RT4 SPRING
+#define CMK_RGB_RT5 BLACK
+
+#define CMK_RGB_LM5 BLACK
+#define CMK_RGB_LM4 SPRING
+#define CMK_RGB_LM3 SPRING
+#define CMK_RGB_LM2 SPRING
+#define CMK_RGB_LM1 SPRING
+#define CMK_RGB_LM0 SPRING
+#define CMK_RGB_LMA BLACK
+
+#define CMK_RGB_RMA BLACK
+#define CMK_RGB_RM0 SPRING
+#define CMK_RGB_RM1 SPRING
+#define CMK_RGB_RM2 SPRING
+#define CMK_RGB_RM3 SPRING
+#define CMK_RGB_RM4 SPRING
+#define CMK_RGB_RM5 BLACK
+
+#define CMK_RGB_LB5 BLACK
+#define CMK_RGB_LB4 SPRING
+#define CMK_RGB_LB3 SPRING
+#define CMK_RGB_LB2 SPRING
+#define CMK_RGB_LB1 SPRING
+#define CMK_RGB_LB0 SPRING
+
+#define CMK_RGB_RB0 SPRING
+#define CMK_RGB_RB1 SPRING
+#define CMK_RGB_RB2 SPRING
+#define CMK_RGB_RB3 SPRING
+#define CMK_RGB_RB4 SPRING
+#define CMK_RGB_RB5 BLACK
+
+#define CMK_RGB_LH2 MAGENTA
+#define CMK_RGB_LH1 CHARTREUSE
+#define CMK_RGB_LH0 CYAN
+
+#define CMK_RGB_RH0 CYAN
+#define CMK_RGB_RH1 CHARTREUSE
+#define CMK_RGB_RH2 MAGENTA
 
 
 // H digraph combos

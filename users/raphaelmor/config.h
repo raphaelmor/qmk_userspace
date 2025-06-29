@@ -7,11 +7,6 @@
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define QUICK_TAP_TERM 0
 
-// Auto Shift
-#define NO_AUTO_SHIFT_ALPHA
-#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
-#define AUTO_SHIFT_NO_SETUP
-
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY          0
@@ -26,9 +21,11 @@
 
 #define SPLIT_LAYER_STATE_ENABLE
 
-// CUSTOM CONFIG
-#define RAMO_COMBO_HOLD (TAPPING_TERM) // time to hold to trigger delayed combo
 
+// RAMO CUSTOM CONFIG
+#define RAMO_COMBO_HOLD (TAPPING_TERM) // time to hold to trigger delayed combo
+#define RAMO_USE_HD_PROMETHIUM // (Gold is the default)
+#define RAMO_ADAPTIVE_TERM (TAPPING_TERM/4) // rolling threshold
 
 
 // Disable led stuff

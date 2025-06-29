@@ -71,3 +71,59 @@
 #define SYM_RH0 SYM_NO
 #define SYM_RH1 SYM_NO
 #define SYM_RH2 SYM_NO
+
+
+
+#define SYM_RGB_LT5 BLACK
+#define SYM_RGB_LT4 CYAN
+#define SYM_RGB_LT3 CYAN
+#define SYM_RGB_LT2 CYAN
+#define SYM_RGB_LT1 CYAN
+#define SYM_RGB_LT0 CYAN
+#define SYM_RGB_LTA BLACK
+
+#define SYM_RGB_RTA BLACK
+#define SYM_RGB_RT0 BLACK
+#define SYM_RGB_RT1 BLACK
+#define SYM_RGB_RT2 BLACK
+#define SYM_RGB_RT3 BLACK
+#define SYM_RGB_RT4 BLACK
+#define SYM_RGB_RT5 BLACK
+
+#define SYM_RGB_LM5 BLACK
+#define SYM_RGB_LM4 CYAN
+#define SYM_RGB_LM3 CYAN
+#define SYM_RGB_LM2 CYAN
+#define SYM_RGB_LM1 CYAN
+#define SYM_RGB_LM0 CYAN
+#define SYM_RGB_LMA BLACK
+
+#define SYM_RGB_RMA BLACK
+#define SYM_RGB_RM0 BLACK
+#define SYM_RGB_RM1 WHITE
+#define SYM_RGB_RM2 WHITE
+#define SYM_RGB_RM3 WHITE
+#define SYM_RGB_RM4 WHITE
+#define SYM_RGB_RM5 BLACK
+
+#define SYM_RGB_LB5 BLACK
+#define SYM_RGB_LB4 CYAN
+#define SYM_RGB_LB3 CYAN
+#define SYM_RGB_LB2 CYAN
+#define SYM_RGB_LB1 CYAN
+#define SYM_RGB_LB0 CYAN
+
+#define SYM_RGB_RB0 BLACK
+#define SYM_RGB_RB1 BLACK
+#define SYM_RGB_RB2 BLACK
+#define SYM_RGB_RB3 WHITE
+#define SYM_RGB_RB4 BLACK
+#define SYM_RGB_RB5 BLACK
+
+#define SYM_RGB_LH2 CYAN
+#define SYM_RGB_LH1 CYAN
+#define SYM_RGB_LH0 CYAN
+
+#define SYM_RGB_RH0 BLACK
+#define SYM_RGB_RH1 BLACK
+#define SYM_RGB_RH2 BLACK

@@ -123,6 +123,60 @@
 #define HDG_RH2 HDG_BSPC
 
 
+#define HDG_RGB_LT5 BLACK
+#define HDG_RGB_LT4 ORANGE
+#define HDG_RGB_LT3 ORANGE
+#define HDG_RGB_LT2 ORANGE
+#define HDG_RGB_LT1 ORANGE
+#define HDG_RGB_LT0 ORANGE
+#define HDG_RGB_LTA BLACK
+
+#define HDG_RGB_RTA BLACK
+#define HDG_RGB_RT0 ORANGE
+#define HDG_RGB_RT1 ORANGE
+#define HDG_RGB_RT2 ORANGE
+#define HDG_RGB_RT3 ORANGE
+#define HDG_RGB_RT4 ORANGE
+#define HDG_RGB_RT5 BLACK
+
+#define HDG_RGB_LM5 BLACK
+#define HDG_RGB_LM4 ORANGE
+#define HDG_RGB_LM3 ORANGE
+#define HDG_RGB_LM2 ORANGE
+#define HDG_RGB_LM1 ORANGE
+#define HDG_RGB_LM0 ORANGE
+#define HDG_RGB_LMA BLACK
+
+#define HDG_RGB_RMA BLACK
+#define HDG_RGB_RM0 ORANGE
+#define HDG_RGB_RM1 ORANGE
+#define HDG_RGB_RM2 ORANGE
+#define HDG_RGB_RM3 ORANGE
+#define HDG_RGB_RM4 ORANGE
+#define HDG_RGB_RM5 BLACK
+
+#define HDG_RGB_LB5 BLACK
+#define HDG_RGB_LB4 ORANGE
+#define HDG_RGB_LB3 ORANGE
+#define HDG_RGB_LB2 ORANGE
+#define HDG_RGB_LB1 ORANGE
+#define HDG_RGB_LB0 ORANGE
+
+#define HDG_RGB_RB0 ORANGE
+#define HDG_RGB_RB1 ORANGE
+#define HDG_RGB_RB2 ORANGE
+#define HDG_RGB_RB3 ORANGE
+#define HDG_RGB_RB4 ORANGE
+#define HDG_RGB_RB5 BLACK
+
+#define HDG_RGB_LH2 MAGENTA
+#define HDG_RGB_LH1 CHARTREUSE
+#define HDG_RGB_LH0 CYAN
+
+#define HDG_RGB_RH0 CYAN
+#define HDG_RGB_RH1 CHARTREUSE
+#define HDG_RGB_RH2 MAGENTA
+
 // H digraph combos
 // try to make these use the lead letter and a neighbor.
 #define USE_HD_H_DIGRAPH_COMBO

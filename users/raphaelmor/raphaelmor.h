@@ -1,7 +1,5 @@
 #pragma once
 
-#include "tap_dance.h"
-#include "combos.h"
+#include "ramo_tap_dance.h"
 
-#define USE_HD_PROMETHIUM // (Gold is the default)
-#include "layers.h"
+#include "ramo_layers.h"
