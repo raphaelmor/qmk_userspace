@@ -1,3 +1,13 @@
+/*
+ * MED-defs.h
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
+
 #pragma once
 
 // Override keys with HRM and Layer keys
@@ -26,11 +36,11 @@
 #define MED_LTA KC_NO // TODO: should be a real key once a use is found
 
 #define MED_RTA KC_NO // TODO: should be a real key once a use is found
-#define MED_RT0 RGB_TOG
-#define MED_RT1 RGB_MOD
-#define MED_RT2 RGB_HUI
-#define MED_RT3 RGB_SAI
-#define MED_RT4 RGB_VAI
+#define MED_RT0 RM_TOGG
+#define MED_RT1 RM_NEXT
+#define MED_RT2 RM_HUEU
+#define MED_RT3 RM_SATU
+#define MED_RT4 RM_VALU
 #define MED_RT5 MED_NO
 
 #define MED_LM5 NAV_NO

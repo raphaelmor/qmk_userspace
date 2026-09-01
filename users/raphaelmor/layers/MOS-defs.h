@@ -1,3 +1,13 @@
+/*
+ * MOS-defs.h
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
+
 #pragma once
 
 // Override keys with HRM and Layer keys
@@ -42,10 +52,10 @@
 
 #define MOS_RMA KC_NO // TODO: should be a real key once a use is found
 #define MOS_RM0 MOS_NO
-#define MOS_RM1 KC_MS_L
-#define MOS_RM2 KC_MS_D
-#define MOS_RM3 KC_MS_U
-#define MOS_RM4 KC_MS_R
+#define MOS_RM1 MS_LEFT
+#define MOS_RM2 MS_DOWN
+#define MOS_RM3 MS_UP
+#define MOS_RM4 MS_RGHT
 #define MOS_RM5 MOS_NO
 
 #define MOS_LB5 MOS_NO
@@ -56,10 +66,10 @@
 #define MOS_LB0 MOS_NO
 
 #define MOS_RB0 MOS_NO
-#define MOS_RB1 KC_WH_L
-#define MOS_RB2 KC_WH_D
-#define MOS_RB3 KC_WH_U
-#define MOS_RB4 KC_WH_R
+#define MOS_RB1 MS_WHLL
+#define MOS_RB2 MS_WHLD
+#define MOS_RB3 MS_WHLU
+#define MOS_RB4 MS_WHLR
 #define MOS_RB5 MOS_NO
 
 //Primary Thumbs 1-3 (others are unique to the board)
@@ -67,9 +77,9 @@
 #define MOS_LH1 MOS_NO
 #define MOS_LH0 MOS_NO
 
-#define MOS_RH0 KC_BTN2
-#define MOS_RH1 KC_BTN1
-#define MOS_RH2 KC_BTN3
+#define MOS_RH0 MS_BTN2
+#define MOS_RH1 MS_BTN1
+#define MOS_RH2 MS_BTN3
 
 
 

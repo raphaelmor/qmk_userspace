@@ -1,3 +1,13 @@
+/*
+ * config.h
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
+
 #pragma once
 
 // default but used in macros
@@ -6,6 +16,12 @@
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define QUICK_TAP_TERM 0
+
+// Gap between register/unregister in tap_code(). At the default 0, back-to-back
+// taps in the adaptives (del-then-retype, e.g. MG -> LG) can land in the same USB
+// frame and go missing or out of sequence. 20 is moutis's value.
+#undef TAP_CODE_DELAY
+#define TAP_CODE_DELAY 20
 
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
@@ -24,8 +40,26 @@
 
 // RAMO CUSTOM CONFIG
 #define RAMO_COMBO_HOLD (TAPPING_TERM) // time to hold to trigger delayed combo
+#define RAMO_LINGER_TERM (TAPPING_TERM) // hold time to auto-pair brackets
 #define RAMO_USE_HD_PROMETHIUM // (Gold is the default)
-#define RAMO_ADAPTIVE_TERM (TAPPING_TERM/4) // rolling threshold
+// Adaptive rolling window: how long after a keydown the next key can still trigger
+// an adaptive. Measured keydown-to-keydown (see prior_keydown_timer / event.time).
+//   50ms  (TAPPING_TERM/4) = ~240 WPM — roll-only; missed most rules in practice
+//   100ms                  = ~120 WPM — fine for fast rolls (PD, WG), but SFB and
+//                            cross-row rules (KH same-finger, KG inner-column
+//                            stretch) are inherently slower and never fired
+//   175ms                  = ~69 WPM — current. Adaptives exist to fix SFBs and
+//                            scissors, which are *slow by definition*, so the
+//                            window has to clear those motions.
+//   229ms (moutis, COMBO_HOLD*1.35) = ~52 WPM
+// Collisions to watch at 175ms (same-row rolls in real words): GM in
+// "pragma"/"progmem", PD in "update", YB in "keyboard", KG in "background".
+// #define RAMO_ADAPTIVE_TERM (TAPPING_TERM/4) // original: 50ms
+// #define RAMO_ADAPTIVE_TERM 100              // too tight for SFB rules
+#define RAMO_ADAPTIVE_TERM 175
+
+
+#define RAMO_ADAPT_SHIFT_TERM (TAPPING_TERM) // comma-leader one-shot-shift window (wider than adaptives)
 
 
 // Disable led stuff

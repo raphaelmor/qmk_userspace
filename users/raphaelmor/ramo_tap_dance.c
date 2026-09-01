@@ -1,3 +1,13 @@
+/*
+ * ramo_tap_dance.c
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
+
 void ramo_TD_make_colemak_default(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         set_single_default_layer(L_COLEMAK);

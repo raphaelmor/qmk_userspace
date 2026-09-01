@@ -1,3 +1,13 @@
+/*
+ * ramo_layers.h
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
+
 #include "layers/CMK-defs.h"
 #ifdef RAMO_USE_HD_PROMETHIUM
 #include "layers/HDP-defs.h"

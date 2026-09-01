@@ -1,3 +1,12 @@
+/*
+ * ramo_ledmap.c
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (c) 2026 Raphaël Mor
+ *
+ * Part of a QMK userspace whose design follows Hands Down Promethium by moutis
+ * (https://github.com/moutis/HandsDown, GPL-3.0). See ./LICENSE.
+ */
 
 // Macro that defines a ledmap per layer (e.g. CMK_RGB_LT5, NAV_RGB_LB1)
 // Then each layer simply has to define the derired color per key

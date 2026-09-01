@@ -2,6 +2,10 @@ CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 
+// TEMP: for debugging adaptive
+KEYCODE_STRING_ENABLE = yes
+CONSOLE_ENABLE = yes
+
 INTROSPECTION_KEYMAP_C += raphaelmor.c
 
 

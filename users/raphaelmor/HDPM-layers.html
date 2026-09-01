@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hands Down Promethium — full layer map</title>
+<style>
+  :root{
+    --bg:#0f1117; --card:#171a22; --key:#222634; --key2:#1b1f2b;
+    --ink:#e7e9ee; --dim:#8b90a0; --line:#2c3142;
+    --alpha:#e7e9ee; --mod:#f6c177; --layer:#9ccfd8; --sem:#c4a7e7;
+    --sym:#7fd6a6; --media:#eb6f92; --rgb:#f28fad; --num:#a3be8c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:28px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;max-width:900px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 26px;font-size:12px}
+  .legend span{display:inline-flex;align-items:center;gap:6px;color:var(--dim)}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .layer{background:var(--card);border:1px solid var(--line);border-radius:14px;
+         padding:18px 20px 22px;margin:0 0 22px}
+  .layer h2{margin:0 0 2px;font-size:17px;display:flex;align-items:baseline;gap:10px}
+  .layer h2 b{font-size:12px;font-weight:600;color:#0f1117;background:var(--layer);
+              padding:2px 8px;border-radius:20px}
+  .layer .how{color:var(--dim);font-size:12px;margin:0 0 16px}
+  .board{display:flex;gap:44px;flex-wrap:wrap;justify-content:center}
+  .half{display:grid;grid-template-columns:repeat(6,minmax(0,58px));gap:6px}
+  .row{display:contents}
+  .key{background:var(--key);border:1px solid var(--line);border-radius:8px;
+       height:52px;padding:4px 5px;position:relative;display:flex;flex-direction:column;
+       justify-content:center;align-items:center;text-align:center;overflow:hidden}
+  .key .m{font-size:13px;font-weight:600;line-height:1.15;word-break:break-word}
+  .key .h{position:absolute;top:2px;right:4px;font-size:9px;color:var(--dim);font-weight:700}
+  .key.trns{background:transparent;border-style:dashed;color:var(--dim)}
+  .key.trns .m{color:var(--dim);font-weight:400;font-size:15px}
+  .key.none{background:transparent;border-color:#20222c}
+  .key.none .m{color:#3a3f52}
+  .key.mod .m{color:var(--mod)} .key.layer .m{color:var(--layer)}
+  .key.sem .m{color:var(--sem);font-size:11px} .key.sym .m{color:var(--sym)}
+  .key.media .m{color:var(--media);font-size:11px} .key.rgb .m{color:var(--rgb);font-size:10px}
+  .key.num .m{color:var(--num)}
+  .thumbs{grid-column:1/7;display:grid;grid-template-columns:repeat(6,minmax(0,58px));gap:6px;margin-top:4px}
+  .thumbs .key{height:46px}
+  .foot{color:var(--dim);font-size:12px;margin-top:8px;max-width:900px}
+  code{background:#20222c;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<h1>Hands Down&nbsp;·&nbsp;Promethium — full layer map</h1>
+<p class="sub">Canonical moutis HD system (<code>github.com/moutis/HandsDown</code>), rendered for a 3×6+3 Corne.
+Seven layers total; the six functional ones are shown (QWERTY is just a plain-QWERTY compatibility fallback).
+Small top-right badge = <b>hold</b> behavior (mod or layer). Layers are reached by <b>holding</b> a thumb/home key on the alpha layer.</p>
+
+<div class="legend">
+  <span><i style="background:var(--alpha)"></i>alpha / letter</span>
+  <span><i style="background:var(--mod)"></i>mod (hold)</span>
+  <span><i style="background:var(--layer)"></i>layer-tap / switch</span>
+  <span><i style="background:var(--sem)"></i>semantic key (SK_*)</span>
+  <span><i style="background:var(--sym)"></i>symbol</span>
+  <span><i style="background:var(--num)"></i>number / nav</span>
+  <span><i style="background:var(--media)"></i>media</span>
+  <span><i style="background:var(--rgb)"></i>RGB / config</span>
+  <span><i style="border:1px dashed var(--dim)"></i>▽ transparent</span>
+</div>
+
+<div id="app"></div>
+
+<p class="foot">How to reach each layer from the alpha layer (all momentary, via layer-tap holds):
+<b>SYM</b> = hold Space · <b>NAV</b> = hold R (L-thumb) or Enter (R-thumb) · <b>FUN</b> = hold Bksp (L-thumb) or F · <b>NUM</b> = hold K · <b>CFG</b> = hold Mute/Play (outer thumbs), or the CFG combo (both inner-thumb pairs).
+Home-row mods on the alpha & FUN/NUM layers: pinky=⌃ ring=⌥ middle=⌘ index=⇧ (both hands).</p>
+
+<script>
+// ---- raw keycodes per layer, in visual order ----
+// each half: [ row of 6 (outer→inner) ]; thumbs: 3 inner keys
+const L = {
+ HD:{purpose:"Base alpha — Hands Down Promethium", how:"letters + home-row mods + thumb layer-taps",
+  top:[["KC_LNG1","KC_V","KC_W","KC_G","KC_M","KC_J"],["KC_HASH","KC_DOT","KC_SLSH","KC_DQUO","KC_QUOT","KC_LNG2"]],
+  home:[["KC_ESC","RCTL_T(KC_S)","RALT_T(KC_N)","RGUI_T(KC_T)","RSFT_T(KC_H)","LT(L_NUM,KC_K)"],["KC_COMM","RSFT_T(KC_A)","RGUI_T(KC_E)","RALT_T(KC_I)","RCTL_T(KC_C)","KC_Z"]],
+  bot:[["KC_TAB","LT(L_FUN,KC_F)","KC_P","KC_D","KC_L","KC_X"],["KC_MINS","KC_U","KC_O","KC_Y","KC_B","KC_Q"]],
+  thumbs:[["LT(L_FUN,KC_BSPC)","LT(L_NAV,KC_R)","LT(L_CFG,KC_MUTE)"],["LT(L_CFG,KC_MPLY)","LT(L_SYM,KC_SPC)","LT(L_NAV,KC_ENT)"]]},
+
+ SYM:{purpose:"Symbols & punctuation",how:"hold Space",
+  top:[["KC_TRNS","KC_Z","KC_Q","SK_PARA","SK_SCRS","SK_DCRS"],["SK_CENT","KC_DLR","SK_EURO","SK_BPND","SK_JPY","KC_TRNS"]],
+  home:[["KC_TRNS","SK_SECT","KC_LBRC","KC_LPRN","KC_LCBR","SK_BBLT"],["KC_PSLS","RSFT_T(KC_PEQL)","RGUI_T(KC_PAST)","RALT_T(KC_PPLS)","RCTL_T(KC_PMNS)","KC_TRNS"]],
+  bot:[["KC_TRNS","SK_DEGR","KC_RBRC","KC_RPRN","KC_RCBR","SK_SBLT"],["KC_CIRC","KC_PIPE","KC_AMPR","KC_LT","KC_GT","KC_TRNS"]],
+  thumbs:[["SK_DELWDL","SK_DELWDR","KC_VOLD"],["KC_VOLU","KC_UNDS","SK_IEXC"]]},
+
+ FUN:{purpose:"Function keys (left) · number row (right)",how:"hold Bksp or F",
+  top:[["RGB_TOG","KC_F13","KC_F7","KC_F8","KC_F9","KC_F10"],["KC_SLSH","KC_7","KC_8","KC_9","KC_MINS","RGB_MOD"]],
+  home:[["RGB_VAI","LCTL_T(KC_F14)","LALT_T(KC_F1)","LGUI_T(KC_F2)","LSFT_T(KC_F3)","KC_F11"],["KC_ASTR","RSFT_T(KC_1)","RGUI_T(KC_2)","RALT_T(KC_3)","RCTL_T(KC_PPLS)","RGB_HUI"]],
+  bot:[["RGB_VAD","KC_F15","KC_F4","KC_F5","KC_F3","KC_F12"],["KC_COMM","KC_4","KC_5","KC_6","KC_EQL","RGB_HUD"]],
+  thumbs:[["KC_SCLN","TG(L_NUM)","KC_INS"],["KC_TRNS","KC_0","KC_DOT"]]},
+
+ NUM:{purpose:"Navigation (left) · numpad (right)",how:"hold K → right-hand numpad only (left index is busy holding K). For two-handed L-nav + R-numpad, TOGGLE it on: R+Space combo, or TG(NUM) from FUN.",
+  top:[["KC_TRNS","SK_DOCBEG","KC_HOME","KC_UP","KC_PGUP","SK_PARAPRV"],["KC_PSLS","KC_P7","KC_P8","KC_P9","KC_PMNS","KC_TRNS"]],
+  home:[["KC_TRNS","SK_WORDPRV","KC_LEFT","KC_DOWN","KC_RGHT","SK_WORDNXT"],["KC_PAST","RSFT_T(KC_P4)","RGUI_T(KC_P5)","RALT_T(KC_P6)","RCTL_T(KC_PPLS)","KC_TRNS"]],
+  bot:[["KC_TRNS","SK_DOCEND","KC_END","KC_SPC","KC_PGDN","SK_PARANXT"],["KC_PCMM","KC_P1","KC_P2","KC_P3","KC_PEQL","KC_TRNS"]],
+  thumbs:[["LGUI_T(KC_BSPC)","LSFT_T(KC_ENT)","SK_CLOZ"],["KC_C","KC_P0","KC_PDOT"]]},
+
+ NAV:{purpose:"Edit & mods (left) · arrows/nav (right)",how:"hold R (left thumb) or Enter (right thumb) — the held thumb frees the OTHER hand: navigate arrows with the right, hold ⌃⌥⌘⇧ + edit keys with the left.",
+  top:[["KC_TRNS","KC_TAB","SK_CLOZ","SK_SCAP","SK_SCLP","SK_PSTM"],["SK_DOCBEG","KC_HOME","KC_UP","KC_PGUP","SK_PARAPRV","KC_TRNS"]],
+  home:[["KC_VOLU","KC_LCTL","KC_LALT","KC_LGUI","KC_LSFT","SK_FIND"],["SK_WORDPRV","KC_LEFT","KC_DOWN","KC_RGHT","SK_WORDNXT","KC_TRNS"]],
+  bot:[["KC_VOLD","SK_UNDO","SK_CUT","SK_COPY","SK_PSTE","SK_FAGN"],["SK_DOCEND","KC_END","KC_DOWN","KC_PGDN","SK_PARANXT","KC_TRNS"]],
+  thumbs:[["KC_BSPC","KC_ENTER","SK_ZOOMRST"],["SK_ZOOMRST","SK_HISTPRV","SK_HISTNXT"]]},
+
+ CFG:{purpose:"Keyboard config (left) · media & consumer (right)",how:"hold Mute/Play, or CFG combo",
+  top:[["KC_NO","SK_Lux","SK_Win","SK_Mac","QK_RBT","SK_KILL"],["SK_ZOOMRST","KC_NUM","KC_EJCT","KC_LALT","LCA(KC_DEL)","RGB_MOD"]],
+  home:[["RGB_VAI","HD_AdaptKeyToggle","HD_L_QWERTY","HD_L_ALPHA","KC_VOLU","KC_BRIU"],["SK_ZOOMOUT","KC_MPRV","KC_MUTE","KC_MNXT","EE_CLR","RGB_SAI"]],
+  bot:[["RGB_HUI","QK_BOOT","AG_SWAP","AG_NORM","KC_VOLD","KC_BRID"],["SK_ZOOMIN","KC_MRWD","KC_MPLY","KC_MFFD","QK_BOOT","RGB_HUD"]],
+  thumbs:[["SK_ZOOMOUT","SK_ZOOMIN","SK_ZOOMRST"],["SK_ZOOMRST","SK_ZOOMIN","SK_ZOOMOUT"]]},
+};
+
+// ---- keycode → readable label ----
+const SK={PARA:"¶",SCRS:"†",DCRS:"‡",CENT:"¢",EURO:"€",BPND:"£",JPY:"¥",SECT:"§",IEXC:"¡",BBLT:"•",SBLT:"·",DEGR:"°",IQUE:"¿",BLLT:"•",ELPS:"…",MDSH:"—",
+ DELWDL:"Del Wd◀",DELWDR:"Del Wd▶",WORDPRV:"Word◀",WORDNXT:"Word▶",DOCBEG:"Doc Top",DOCEND:"Doc End",
+ LINEBEG:"Ln Beg",LINEEND:"Ln End",PARAPRV:"¶ ◀",PARANXT:"¶ ▶",
+ UNDO:"Undo",REDO:"Redo",CUT:"Cut",COPY:"Copy",PSTE:"Paste",PSTM:"Paste=",SALL:"Sel All",SWRD:"Sel Wd",
+ FIND:"Find",FAGN:"Find→",NEW:"New",OPEN:"Open",CLOZ:"Close",QUIT:"Quit",
+ SCAP:"Shot▸file",SCLP:"Shot▸clip",SRCH:"Search",KILL:"Force-Quit",HENT:"Hard⏎",
+ ZOOMIN:"Zoom+",ZOOMOUT:"Zoom−",ZOOMRST:"Zoom·0",HISTPRV:"◀ Back",HISTNXT:"Fwd ▶",
+ Mac:"OS·Mac",Win:"OS·Win",Lux:"OS·Linux",MHEN:"英数",HENK:"かな",DKT8:"Dictate",AIVC:"AI/Siri"};
+const KC={SPC:"Space",BSPC:"⌫",ENT:"⏎",ENTER:"⏎",TAB:"⇥",ESC:"Esc",DEL:"⌦",INS:"Ins",
+ HOME:"Home",END:"End",PGUP:"PgUp",PGDN:"PgDn",UP:"↑",DOWN:"↓",LEFT:"←",RGHT:"→",RIGHT:"→",
+ MUTE:"🔇",VOLU:"Vol+",VOLD:"Vol−",MPLY:"⏯",MPRV:"⏮",MNXT:"⏭",MSTP:"⏹",MRWD:"⏪",MFFD:"⏩",
+ EJCT:"⏏",BRIU:"☀+",BRID:"☀−",NUM:"NumLk",CAPS:"CapsLk",APP:"▤ Menu",
+ DLR:"$",HASH:"#",SLSH:"/",DQUO:'"',QUOT:"'",COMM:",",DOT:".",MINS:"−",UNDS:"_",EQL:"=",
+ CIRC:"^",PIPE:"|",AMPR:"&",LT:"<",GT:">",LBRC:"[",RBRC:"]",LPRN:"(",RPRN:")",LCBR:"{",RCBR:"}",
+ ASTR:"*",PLUS:"+",SCLN:";",TILD:"~",GRAVE:"`",EXLM:"!",QUES:"?",
+ PSLS:"/",PAST:"*",PMNS:"−",PPLS:"+",PEQL:"=",PDOT:".",PCMM:",",PENT:"⏎",
+ P0:"0",P1:"1",P2:"2",P3:"3",P4:"4",P5:"5",P6:"6",P7:"7",P8:"8",P9:"9",
+ LCTL:"⌃",LALT:"⌥",LGUI:"⌘",LSFT:"⇧",RCTL:"⌃",RALT:"⌥",RGUI:"⌘",RSFT:"⇧",
+ LNG1:"英/かな",LNG2:"かな",T:"T",C:"C"};
+const MODSYM={SFT:"⇧",CTL:"⌃",ALT:"⌥",GUI:"⌘",HYPR:"✦",MEH:"◆"};
+const LAYERNAME={L_SYM:"SYM",L_FUN:"FUN",L_NUM:"NUM",L_NAV:"NAV",L_CFG:"CFG",L_HD:"HD"};
+const EXACT={ "LALT(KC_8)":{m:"•",h:"⌥8"}, "LSA(KC_8)":{m:"°",h:"⇧⌥8"}, "LSA(KC_9)":{m:"·",h:"⇧⌥9"},
+ "LALT(KC_9)":{m:"ª",h:"⌥9"}, "LCA(KC_DEL)":{m:"⌃⌥⌦",h:"kill"}, "G(KC_TAB)":{m:"⌘⇥"}, "G(KC_R)":{m:"⌘R"},
+ "HD_AdaptKeyToggle":{m:"Adaptive",h:"on/off",cls:"layer"}, "HD_L_QWERTY":{m:"▸QWERTY",cls:"layer"},
+ "HD_L_ALPHA":{m:"▸HD",cls:"layer"}, "QK_BOOT":{m:"Bootloader",cls:"rgb"}, "QK_RBT":{m:"Reboot",cls:"rgb"},
+ "EE_CLR":{m:"Clr EEPROM",cls:"rgb"}, "AG_SWAP":{m:"⌥/⌘ swap",cls:"rgb"}, "AG_NORM":{m:"⌥/⌘ norm",cls:"rgb"},
+ "KC_TRNS":{m:"▽",cls:"trns"}, "KC_NO":{m:"∅",cls:"none"} };
+
+function fmt(kc){
+  if(EXACT[kc]) {const e=EXACT[kc];return {m:e.m,h:e.h||"",cls:e.cls||classify(kc,e.m)};}
+  let m;
+  // mod-tap  RSFT_T(KC_A)
+  let mt=kc.match(/^[LR](SFT|CTL|ALT|GUI|HYPR|MEH)_T\((.+)\)$/);
+  if(mt){let inner=fmt(mt[2]);return {m:inner.m,h:MODSYM[mt[1]],cls:"mod"};}
+  // layer-tap LT(L_x,KC_y)
+  let lt=kc.match(/^LT\((\w+),\s*(.+)\)$/);
+  if(lt){let inner=fmt(lt[2]);return {m:inner.m,h:"▸"+(LAYERNAME[lt[1]]||lt[1].replace("L_","")),cls:"layer"};}
+  // MO/TG/TO/TT/DF(L_x)
+  let mo=kc.match(/^(MO|TG|TO|TT|DF)\((\w+)\)$/);
+  if(mo){return {m:"▸"+(LAYERNAME[mo[2]]||mo[2].replace("L_","")),h:mo[1].toLowerCase(),cls:"layer"};}
+  // SK_*
+  let sk=kc.match(/^SK_(\w+)$/);
+  if(sk){return {m:SK[sk[1]]||sk[1],h:"",cls:classify(kc,SK[sk[1]]||"")};}
+  // RGB_*
+  let rg=kc.match(/^RGB_(\w+)$/);
+  if(rg){const map={TOG:"RGB ⏻",MOD:"RGB ▸",VAI:"RGB ☀+",VAD:"RGB ☀−",HUI:"RGB hue+",HUD:"RGB hue−",SAI:"RGB sat+",SAD:"RGB sat−"};
+         return {m:map[rg[1]]||("RGB "+rg[1]),h:"",cls:"rgb"};}
+  // KC_*
+  let k=kc.match(/^KC_(\w+)$/);
+  if(k){m=KC[k[1]] !== undefined ? KC[k[1]] : (k[1].match(/^F\d+$/)?k[1]: k[1].length===1?k[1]:k[1]);
+        return {m:m,h:"",cls:classify(kc,m)};}
+  return {m:kc,h:"",cls:"base"};
+}
+function classify(kc,m){
+  if(/SK_/.test(kc))return "sem";
+  if(/RGB_|QK_|AG_|EE_/.test(kc))return "rgb";
+  if(/VOL|MPLY|MPRV|MNXT|MSTP|MRWD|MFFD|MUTE|BRIU|BRID|EJCT/.test(kc))return "media";
+  if(/KC_(DLR|HASH|SLSH|DQUO|QUOT|COMM|DOT|MINS|UNDS|EQL|CIRC|PIPE|AMPR|LT|GT|LBRC|RBRC|LPRN|RPRN|LCBR|RCBR|ASTR|PLUS|SCLN|TILD|GRAVE|EXLM|QUES|PSLS|PAST|PMNS|PPLS|PEQL)/.test(kc))return "sym";
+  if(/KC_(P?\d|P[0-9]|HOME|END|PGUP|PGDN|UP|DOWN|LEFT|RGHT|RIGHT|PDOT|PCMM)/.test(kc))return "num";
+  if(/KC_[LR](CTL|ALT|GUI|SFT)$/.test(kc))return "mod";
+  return "base";
+}
+
+function keyEl(kc){
+  const f=fmt(kc);
+  const d=document.createElement("div");
+  d.className="key "+(f.cls||"base");
+  d.title=kc;
+  d.innerHTML=(f.h?`<span class="h">${f.h}</span>`:"")+`<span class="m">${f.m}</span>`;
+  return d;
+}
+function half(rows,thumbs,side){
+  const h=document.createElement("div");h.className="half";
+  rows.forEach(r=>r.forEach(kc=>h.appendChild(keyEl(kc))));
+  const t=document.createElement("div");t.className="thumbs";
+  // pad: left half thumbs sit in cols 4-6; right half in cols 1-3
+  const cells = side==="L" ? ["","","",...thumbs] : [...thumbs,"","",""];
+  cells.forEach(kc=>{ if(kc==="") {const s=document.createElement("div");s.style.visibility="hidden";t.appendChild(s);} else t.appendChild(keyEl(kc)); });
+  h.appendChild(t);
+  return h;
+}
+const app=document.getElementById("app");
+Object.entries(L).forEach(([name,d])=>{
+  const sec=document.createElement("div");sec.className="layer";
+  sec.innerHTML=`<h2><b>${name}</b> ${d.purpose}</h2><p class="how">reach: ${d.how}</p>`;
+  const board=document.createElement("div");board.className="board";
+  board.appendChild(half([d.top[0],d.home[0],d.bot[0]],d.thumbs[0],"L"));
+  board.appendChild(half([d.top[1],d.home[1],d.bot[1]],d.thumbs[1],"R"));
+  sec.appendChild(board);app.appendChild(sec);
+});
+</script>
+</body>
+</html>
