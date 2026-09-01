@@ -630,6 +630,8 @@ def section_grid() -> list[str]:
         "",
         "T/M/B are the top, middle and bottom rows; H is the thumb cluster. The",
         "digit counts inward from the pinky, so 0 is the index column.",
+        "",
+        L.GRID_NOTE,
     ]
 
 
@@ -648,8 +650,8 @@ def section_reaching(layers, activators) -> list[str]:
     out = [
         "## Reaching a layer",
         "",
-        "Each layer's picture marks the key you **hold** to get there in red, and",
-        "ghosts it, because it is not something that layer binds. Where the two",
+        "Each layer's picture marks the key you **hold** to get there in red. "
+        "Where the two",
         f"bases differ the column reads {display_name(bases[0][0])} / "
         f"{display_name(bases[1][0])}.",
         "",
@@ -707,13 +709,6 @@ def section_combos(layers, keys, combos) -> list[str]:
         "",
     ] + body
 
-    duplicates = len(combos) - len(shown)
-    if duplicates:
-        out += ["",
-                f"`key_combos[]` declares {len(combos)} entries. "
-                + (f"{duplicates} of them repeat a chord"
-                   if duplicates > 1 else "One of them repeats a chord"),
-                "already listed above — same positions, same output."]
     return out
 
 
@@ -724,11 +719,13 @@ def section_adaptives(layers, adaptives, terms) -> list[str]:
         f"Only on the {display_name(layers[1][0])} base. Roll two keys inside "
         f"{terms['RAMO_ADAPTIVE_TERM']} ms and the",
         "second one rewrites the pair. Rules that name three letters need the",
-        "third-from-last key too.",
+        "third-from-last key too (only available on QMK on the Corne).",
         "",
         "```",
     ]
-    for rule in adaptives:
+    # Three-key rules first — they are the ones with the extra requirement, and
+    # they read better grouped than scattered through the two-key rules.
+    for rule in sorted(adaptives, key=lambda r: r["preprior"] is None):
         after = (f"{rule['preprior'][3:]}+{rule['prior'][3:]}" if rule["preprior"]
                  else rule["prior"][3:])
         out.append(f"  {rule['note']:<52} (fires on {rule['trigger'][3:]}"
@@ -830,31 +827,39 @@ def read_all(promethium: bool) -> dict:
 
 
 def section_alphas(layers, keys) -> list[str]:
-    """The two alpha bases as text grids, so the doc is useful without images."""
+    """The two alpha bases as text grids, so the doc is useful without images.
+
+    The box has to close on the thumb row, so a half's inner width is derived
+    from where the thumb block ends, not from the column count. Deriving it from
+    the columns leaves the right border one column short of the thumb row's.
+    """
     out = ["## The two bases", "",
            "Switch between them with a double tap on the Nav layer. Everything",
            "else — layers, combos, adaptives — is shared.", ""]
     for enum, prefix in layers[:2]:
         cells = {p: alpha_of(keys[prefix][p]) for p in DRAWN}
         pad = max(len(v) for v in cells.values())
-        half = (pad + 1) * len(DRAWN_LEFT_COLS) + 1     # a half's inner width
-        thumb = (pad + 1) * 3 + 1                       # the thumb block's width
-        shoulder = half - thumb                         # what the thumbs sit under
+        step = pad + 1
+        thumbs_len = step * 3 - 1                        # "Esc  ␣  Tab"
+        shoulder = step * (len(DRAWN_LEFT_COLS) - 3)     # dashes before the thumbs
+        half = shoulder + thumbs_len + 3                 # a half's inner width
+        thumb_dashes = thumbs_len + 2
 
         def cell_row(side: str, row: str, cols: list[str]) -> str:
-            return " ".join(cells[f"{side}{row}{c}"].center(pad) for c in cols)
+            body = " ".join(cells[f"{side}{row}{c}"].center(pad) for c in cols)
+            return (" " + body).ljust(half)
 
         out += [f"### {display_name(enum)}", "", "```",
                 "  ╭" + "─" * half + "╮  ╭" + "─" * half + "╮"]
         for row in ROWS:
-            out.append(f"  │ {cell_row('L', row, DRAWN_LEFT_COLS)} │"
-                       f"  │ {cell_row('R', row, DRAWN_RIGHT_COLS)} │")
+            out.append(f"  │{cell_row('L', row, DRAWN_LEFT_COLS)}│"
+                       f"  │{cell_row('R', row, DRAWN_RIGHT_COLS)}│")
         thumbs_l = " ".join(cells[p].center(pad) for p in ("LH2", "LH1", "LH0"))
         thumbs_r = " ".join(cells[p].center(pad) for p in ("RH0", "RH1", "RH2"))
         out += ["  ╰" + "─" * shoulder + "╮ " + thumbs_l + " │"
                 "  │ " + thumbs_r + " ╭" + "─" * shoulder + "╯",
-                "  " + " " * (shoulder + 1) + "╰" + "─" * thumb + "╯"
-                "  ╰" + "─" * thumb + "╯",
+                "  " + " " * (shoulder + 1) + "╰" + "─" * thumb_dashes + "╯"
+                "  ╰" + "─" * thumb_dashes + "╯",
                 "```", ""]
     return out[:-1]
 
@@ -1010,8 +1015,8 @@ def one_board(source: dict, enum: str, prefix: str) -> list:
              "plate": True}] + rows
 
 
-def build(promethium: bool) -> list:
-    source = read_all(promethium)
+def build_document(source: dict) -> list:
+    """The stacked KLE document, from an already-read source."""
     layers, keys = source["layers"], source["keys"]
     base_prefixes = [p for _, p in layers[:2]]
 
@@ -1029,11 +1034,24 @@ def build(promethium: bool) -> list:
 
     head = {
         "backcolor": L.BOARD_BG,
-        "name": document_name(promethium),
+        "name": document_name(source["promethium"]),
         "notes": notes_for(source),
         "plate": True,
     }
     return [head] + rows
+
+
+def serialize(document: list, raw: bool = False) -> str:
+    """The JSON text. `raw` drops the outer brackets for KLE's Raw data tab,
+    which wraps whatever you paste in `[ ]` of its own."""
+    if raw:
+        return ",\n".join(json.dumps(row, ensure_ascii=False)
+                          for row in document) + "\n"
+    return json.dumps(document, indent=2, ensure_ascii=False) + "\n"
+
+
+def build(promethium: bool) -> list:
+    return build_document(read_all(promethium))
 
 
 def main() -> int:
@@ -1055,13 +1073,7 @@ def main() -> int:
         print(f"kle_export: {err}", file=sys.stderr)
         return 1
 
-    if args.raw:
-        # One row per line, no outer [ ]. This is what the Raw data tab shows.
-        text = ",\n".join(json.dumps(row, ensure_ascii=False)
-                          for row in document) + "\n"
-    else:
-        text = json.dumps(document, indent=2, ensure_ascii=False) + "\n"
-    args.output.write_text(text)
+    args.output.write_text(serialize(document, args.raw))
 
     keys = sum(1 for row in document[1:] for item in row if isinstance(item, str))
     print(f"wrote {args.output} — {keys} keys"

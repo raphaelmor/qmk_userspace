@@ -30,6 +30,7 @@ import kle_export as E  # noqa: E402
 import kle_render as R  # noqa: E402
 
 QMK_README = E.USERSPACE / "README.md"
+KLE_JSON = E.USERSPACE / "corne-v4-1-ramo.json"
 LAYOUT_REPO = E.USERSPACE.parents[2] / "keyboard-layout"
 BEGIN = "<!-- layout:begin -->"
 END = "<!-- layout:end -->"
@@ -84,10 +85,14 @@ def read_or_empty(path: Path) -> str:
 
 def planned_files(source: dict, layout_repo: Path | None) -> dict[Path, str]:
     """Every path this run would write, and what it would put there."""
+    # The KLE document's Notes field is built from the same sections as the two
+    # READMEs, so it goes stale for the same reasons. Cover it here or --check
+    # will report "up to date" while corne-v4-1-ramo.json still holds old text.
     files: dict[Path, str] = {
         QMK_README: splice(read_or_empty(QMK_README),
                            E.qmk_doc(source),
                            QMK_PREAMBLE_MARKER),
+        KLE_JSON: E.serialize(E.build_document(source)),
     }
     if layout_repo is None:
         return files

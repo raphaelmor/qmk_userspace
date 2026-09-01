@@ -226,6 +226,13 @@ COMBO_LONG_NOTES = {
     "HD_COMBO_CAPW": "Caps Word on or off",
 }
 
+# A note under the position grid. It names both boards, which the generator
+# cannot know from the QMK sources alone, so it lives here as prose you own.
+GRID_NOTE = (
+    "The additional keys (the 3 outer and 2 inner keys in each half of the "
+    "Corne, or the additional pinky key in each half of the Totem) are unused.")
+
+
 # Behaviors that are always on. These live in process_record / matrix_scan, not in
 # any table a parser could read, so they are transcribed here.
 #
